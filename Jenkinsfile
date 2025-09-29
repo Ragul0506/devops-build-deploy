@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image using React build folder
-                    docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}", ".")
+                    docker.build("${IMAGE_NAME}", ".")
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
                         def branch = env.BRANCH_NAME ?: 'dev'
 
                         if (branch == "dev") {
-                            sh "docker tag("${IMAGE_NAME}:${env.BUILD_NUMBER}") $DEV_REPO"
+                            sh "docker tag("${IMAGE_NAME}") $DEV_REPO"
                             docker.push("$DEV_REPO")
                             
                         } else if (branch == "master") {
