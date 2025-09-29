@@ -40,7 +40,7 @@ pipeline {
 
                         if (branch == "dev") {
                             docker tag("${IMAGE_NAME}:${env.BUILD_NUMBER}") $DEV_REPO
-                            docker.image("${IMAGE_NAME}:${env.BUILD_NUMBER}").push("latest")
+                            docker.push("$DEV_REPO")
                             
                         } else if (branch == "master") {
                             docker.image("${IMAGE_NAME}:${env.BUILD_NUMBER}").push("latest")
