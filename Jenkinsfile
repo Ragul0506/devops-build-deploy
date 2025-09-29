@@ -39,7 +39,7 @@ pipeline {
                         def branch = env.BRANCH_NAME ?: 'dev'
 
                         if (branch == "dev") {
-                            docker tag("${IMAGE_NAME}:${env.BUILD_NUMBER}") $DEV_REPO
+                            sh "docker tag("${IMAGE_NAME}:${env.BUILD_NUMBER}") $DEV_REPO"
                             docker.push("$DEV_REPO")
                             
                         } else if (branch == "master") {
