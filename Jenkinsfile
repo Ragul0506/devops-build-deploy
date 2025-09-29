@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image using React build folder
-                    docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}", "./build")
+                    docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}", ".")
                 }
             }
         }
